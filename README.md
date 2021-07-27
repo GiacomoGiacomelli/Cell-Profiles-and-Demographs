@@ -1,8 +1,19 @@
 # Demographs
 
 ## Available Files:
-- ProfilingCells_EPI.ijm
-- CPAD1_Extract_Cell_length_from_membrane_stain_V1.R
+ProfilingCells_EPI.ijm
+- Input: Multi Channel Microscopy Image (Any Image)
+- Input: ROIs (Segmented Lines with defined Width -> User Defined)
+- Output1: "Gray*.txt" (Position X, Channel 1 Intensity from ROI #*) 
+- Output2: "Red*.txt" (Position X, Channel 2 Intensity from ROI #*) 
+- Output3: "Blue*.txt" (Position X, Channel 3 Intensity from ROI #*) 
+
+CPAD1_Extract_Cell_length_from_membrane_stain_V1.R
+- Input: CellsProfiles
+- Input: Elyra_Table_Example
+- Output: Channel_#_updatedtableX.txt (Elyra table drifted according to the ROIs)
+
+############################################################################################################################################ 
 - CPAD2_Cell_Profiles_And_Demographs_From_GG_Fiji_Macro_V3.R
 
 Elyra_Table_example: 
