@@ -1,7 +1,14 @@
+############################################################################################################################################
+#The aim of this script is to automatically curate manually drawn cell profiles.
+#This script define the beginning and end of a cell based on the membrane staining fluorescence profile.
+#The outer limits of a cells are here defined as the maximum fluorescence intensity within the first and last 20% of the profile data.
+############################################################################################################################################
+
 #Set the working directory within one of the "Profiles" folder containing the "Blue*.txt", "Gray*.txt" and "Red*.txt" files (See output from "ProfilingCells_EPI.ijm"
-fold<-"Profiles*"
+
+fold<-"Profiles*"  #Input folders
 folder<-paste("../",Sys.glob(fold), sep="")
-fold1<-"Membranes*"
+fold1<-"Membranes*"  #Output folders
 outfolder<-paste("../",Sys.glob(fold1),"/", sep="")
 
 chan<-"Red*"
