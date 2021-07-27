@@ -1,4 +1,4 @@
-
+#Set the working directory within one of the "Profiles" folder containing the "Blue*.txt", "Gray*.txt" and "Red*.txt" files (See output from "ProfilingCells_EPI.ijm"
 fold<-"Profiles*"
 folder<-paste("../",Sys.glob(fold), sep="")
 fold1<-"Membranes*"
