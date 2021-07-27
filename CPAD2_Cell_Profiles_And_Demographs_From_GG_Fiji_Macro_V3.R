@@ -6,15 +6,14 @@ library("gplots")
 library("RColorBrewer")
 library("ggplot2")
 
-
 ############################################################################################################################################################################
 #File input
 ############################################################################################################################################################################
-setwd("~/MAMBE/Prep module for MT/Microscopy/20210310_woMMC/WT/T4h")
-fold<-"Membranes*"
+setwd("~/Experiment/Condition/Subcondition")
+fold<-"Membranes*"                                                    #The name here should reflect the folder nomenclature that is used to store the profiles
 folder<-paste("../",Sys.glob(fold),sep="")
 
-setwd("~/MAMBE/Prep module for MT/Microscopy/20210310_woMMC/WT/T4h/Membranes01")  
+setwd("~/Experiment/Condition/Subcondition/Membranes01")  
 
 PlotType<-"CellNorm"  #choose between CellNorm and PopNorm
 
