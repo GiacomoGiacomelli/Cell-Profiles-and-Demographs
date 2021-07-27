@@ -88,14 +88,14 @@ for(k in 1:length(unique(REDTOT1$V4))){
   }
 }
 
-write.table(REDTOT1, file="../WT_CellNormMinMax_profiles_ordered.txt",sep=",",row.names = FALSE, quote=FALSE)   ###save file containing the fluorescence profiles ordereed by cell length
-write.table(df2, file="../WT_CellNormMinMax_profiles_ordered_matrix.txt",sep=",",row.names = FALSE, quote=FALSE)  ###save matrix used to represent the fluorescence profiles as demographs via hist2d()
-write.table(maxim, file="../WT_CellNormMinMax_maxim.txt",sep=",",row.names = FALSE, quote=FALSE)  ###save matrix used to represent the fluorescence profiles as demographs via hist2d()
+write.table(REDTOT1, file="../CellNormMinMax_profiles_ordered.txt",sep=",",row.names = FALSE, quote=FALSE)   ###save file containing the fluorescence profiles ordereed by cell length
+write.table(df2, file="../CellNormMinMax_profiles_ordered_matrix.txt",sep=",",row.names = FALSE, quote=FALSE)  ###save matrix used to represent the fluorescence profiles as demographs via hist2d()
+write.table(maxim, file="../CellNormMinMax_maxim.txt",sep=",",row.names = FALSE, quote=FALSE)  ###maximum length among the profiles
 
-#REDTOT1<-read.table(file="../Red_profiles_ordered.txt",sep=",", header=TRUE)   ###save file containing the fluorescence profiles ordereed by cell length
-#df2<-read.table(file="../Red_profiles_ordered_matrix.txt",sep=",", header=TRUE)  ###save matrix used to represent the fluorescence profiles as demographs via hist2d()
-#maxim<-read.table(file="../Red_maxim.txt",sep=",", header=TRUE)  ###save matrix used to represent the fluorescence profiles as demographs via hist2d()
-#a<-seq(0,maxim[1,1], by=0.1)
+#REDTOT1<-read.table(file="../Red_profiles_ordered.txt",sep=",", header=TRUE)   ###import file containing the fluorescence profiles ordereed by cell length
+#df2<-read.table(file="../Red_profiles_ordered_matrix.txt",sep=",", header=TRUE)  ###import matrix used to represent the fluorescence profiles as demographs via hist2d()
+#maxim<-read.table(file="../Red_maxim.txt",sep=",", header=TRUE)  ###import maximum length among the profiles
+#a<-seq(0,maxim[1,1], by=0.1) #Use when importing data 
 
 rf1<-colorRampPalette(c("black","blue","red")) ####Define color scale
 r <- rf1(256)
@@ -121,11 +121,12 @@ findpeaks <- function(y, span = NULL)
   
   which(c(rep(FALSE, s), v, rep(FALSE, s)))
 }
+
 #############################################
-setwd("~/MAMBE/Prep module for MT/Microscopy/20210310_woMMC/WT/T4h")  
+setwd("~/Experiment/Condition/Subcondition")  
 fold<-"Membranes*"
 folder<-paste("../",Sys.glob(fold),sep="")
-setwd("~/MAMBE/Prep module for MT/Microscopy/20210310_woMMC/WT/T4h/Membranes01")  
+setwd("~/Experiment/Condition/Subcondition/Membranes1")  
  
 
 chan<-"Red*"
@@ -169,174 +170,23 @@ for (f in folder){
   cellsTOT<-rbind(cellsTOT,cells)
   cellsTOT$Index<-seq(1,length(cellsTOT$Index), by=1)
 }
-write.table(cellsTOT, file="../CellLength_and_Peaks_M_mc.txt",sep=",",row.names = FALSE, quote=FALSE)   ###save file containing the fluorescence profiles ordereed by cell length
+write.table(cellsTOT, file="../CellLength_and_Peaks_M_mc.txt",sep=",",row.names = FALSE, quote=FALSE)   ###save file containing cell length and the number of peaks contained in each fluorescence channel
 
-####plot single profiles and peaks
-#for (f in folder){
-#  setwd(f)
-#  RED<-Sys.glob(chan)
-#  BLUE<-Sys.glob(chan1)
-#for(w in 1:length(RED)){
-#fileb<-read.table(BLUE[w], sep="\t",dec=".", stringsAsFactors=FALSE,header=TRUE)
-#filer<-read.table(RED[w], sep="\t",dec=".", stringsAsFactors=FALSE,header=TRUE)
+#EXAMPLE of analyis of obtained data
 
 #4h_20210209_new_mito
-RESK<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/ResK/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB1<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/DipB1/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB2<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/DipB2/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB3<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/DipB3/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
+#RESK<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/ResK/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
+#dipB1<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/DipB1/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
+#dipB2<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/DipB2/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
+#dipB3<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209/DipB3/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
 
+#ggplot(data=RESK, aes(x=Length, y=..density..))+
+#  geom_histogram(fill="royalblue4", alpha=1, binwidth = 0.25)+
+#  geom_histogram(data=dipB3, aes(x=Length, y=..density..), fill="orange", alpha=0.5, binwidth=0.25)+
+#  geom_histogram(data=dipB2, aes(x=Length, y=..density..), fill="yellow", alpha=0.5, binwidth=0.25)+
+#  geom_histogram(data=dipB1, aes(x=Length, y=..density..), fill="red", alpha=0.5, binwidth=0.5)+
+#  theme_bw()
 
-#2h_20210209_new_mito
-RESK<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209_newMMC/ResK/T2h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB1<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209_newMMC/DipB1/T2h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB2<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209_newMMC/DipB2/T2h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB3<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/20210209_newMMC/DipB3/T2h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-
-#4h_20210202_nomito
-RESK<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210202/RES/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB1<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210202/dipB1/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB2<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210202/DipB2/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB3<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210202/DipB3/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-
-#4h_20210204_mito
-RESK<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210204/ResK/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB1<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210204/DipB1/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB2<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210204/DipB2/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-dipB3<-read.table("X:/Giacomo Giacomelli/DIPS_project/Students/Bente/Analysed/20210204/DipB3/T4h/CellLength_and_Peaks_M_mc.txt", sep=",", header=TRUE)
-
-ggplot(data=RESK, aes(x=Length, y=..density..))+
-  geom_histogram(fill="royalblue4", alpha=1, binwidth = 0.25)+
-  geom_histogram(data=dipB3, aes(x=Length, y=..density..), fill="orange", alpha=0.5, binwidth=0.25)+
-  geom_histogram(data=dipB2, aes(x=Length, y=..density..), fill="yellow", alpha=0.5, binwidth=0.25)+
-  geom_histogram(data=dipB1, aes(x=Length, y=..density..), fill="red", alpha=0.5, binwidth=0.5)+
-  theme_bw()
-
-shapiro.test(RESK$Length)
-kruskal.test(RESK$Length,dipB1$Length)
-wilcox.test(RESK$Length,dipB1$Length)
-
-k
-
-
-
-ggplot(data=RESK, aes(x=RedPeak, y=..density..))+
-  geom_histogram(fill="royalblue4", alpha=1, binwidth = 1)+
-  #geom_histogram(data=dipB3, aes(x=RedPeak, y=..density..), fill="orange", alpha=0.5, binwidth=1)+
-  geom_histogram(data=dipB2, aes(x=RedPeak, y=..density..), fill="yellow", alpha=0.5, binwidth=1)+
-  #geom_histogram(data=dipB1, aes(x=RedPeak, y=..density..), fill="red", alpha=0.5, binwidth=1)+
-  theme_bw()
-
-ggplot(data=RESK, aes(x=BluePeak, y=..density..))+
-  geom_histogram(fill="royalblue4", alpha=1, binwidth = 1)+
-  #geom_histogram(data=dipB3, aes(x=BluePeak, y=..density..), fill="orange", alpha=0.5, binwidth=1)+
-  geom_histogram(data=dipB2, aes(x=BluePeak, y=..density..), fill="yellow", alpha=0.5, binwidth=1)+
-  #geom_histogram(data=dipB1, aes(x=BluePeak, y=..density..), fill="red", alpha=0.5, binwidth=1)+
-  theme_bw()
-
-ggplot(data=RESK, aes(x=Length, y=BluePeak))+
-  geom_point(col="royalblue4", alpha=1)+
-  geom_point(data=dipB3, aes(x=Length, y=BluePeak+0.05), col="orange", alpha=0.5)+
-  geom_point(data=dipB2, aes(x=Length, y=BluePeak+0.10), col="yellow", alpha=0.5)+
-  geom_point(data=dipB1, aes(x=Length, y=BluePeak+0.15), col="red", alpha=0.5)+
-  theme_bw()
-
-ggplot(data=RESK, aes(x=Length, y=RedPeak))+
-  geom_point(col="royalblue4", alpha=1)+
-  geom_point(data=dipB3, aes(x=Length, y=RedPeak+0.05), col="orange", alpha=0.5)+
-  #geom_point(data=dipB2, aes(x=Length, y=RedPeak+0.10), col="yellow", alpha=0.5)+
-  geom_point(data=dipB1, aes(x=Length, y=RedPeak+0.15), col="red", alpha=0.5)+
-  theme_bw()
-
-ggplot(data=RESK, aes(x=BluePeak, y=RedPeak))+
-  geom_point(col="royalblue4", alpha=1)+
-  geom_point(data=dipB3, aes(x=BluePeak+0.05, y=RedPeak+0.05), col="orange", alpha=0.5)+
-  geom_point(data=dipB2, aes(x=BluePeak+0.10, y=RedPeak+0.10), col="yellow", alpha=0.5)+
-  geom_point(data=dipB1, aes(x=BluePeak+0.15, y=RedPeak+0.15), col="red", alpha=0.5)+
-  theme_bw()
-
-
-
-shapiro.test(RESK$Length)
-shapiro.test(dipB3$Length)
-
-RESK[5]<-"ResK"
-colnames(RESK)[5]<-"Strain"
-dipB3[5]<-"dipB3"
-colnames(dipB3)[5]<-"Strain"
-dipB2[5]<-"dipB2"
-colnames(dipB2)[5]<-"Strain"
-dipB1[5]<-"dipB1"
-colnames(dipB1)[5]<-"Strain"
-
-TOT<-rbind(RESK, dipB1, dipB2, dipB3)
-
-wilcox.test(Length ~ Strain, data=TOT) 
-wilcox.test(RedPeak ~ Strain, data=TOT) 
-wilcox.test(BluePeak ~ Strain, data=TOT) 
-library("pgirmess")
-kruskalmc(Length ~ Strain, data=TOT)
-
-
-
-#png(file=paste("Cell",w,".png",sep=""),height=2000,width=3000,res=600)  ####Demograph
-#print(ggplot(data=fileb, aes(x=x, y=y))+
-#  geom_line(col="blue")+
-#  geom_point(data=fileb[findpeaks(fileb$y, span=10),][fileb[findpeaks(fileb$y, span=10),]$y-min(fileb$y)>(0.4*(max(fileb$y)-min(fileb$y))),], aes(x=x, y=y), col="blue")+
-#  geom_line(data=filer, aes(x=x, y=y), col="red")+
-#  geom_point(data=filer[findpeaks(filer$y, span=10),][filer[findpeaks(filer$y, span=10),]$y-min(filer$y)>(0.4*(max(filer$y)-min(filer$y))),], aes(x=x, y=y), col="red")+
-#  theme_bw())
-#dev.off()
-#}
-#}
-
-png(file=("../Length_blue_peaks.png"),height=2000,width=3000,res=600) 
-ggplot(data=cellsTOT[cellsTOT$BluePeak==1,], aes(x=Length))+
-  geom_histogram(binwidth=0.2, fill="royalblue4")+
-  geom_histogram(data=cellsTOT[cellsTOT$BluePeak==2,],binwidth=0.2, alpha=0.5, fill="orange")
-dev.off()
-
-png(file=("../Length_red_peaks.png"),height=2000,width=3000,res=600) 
-ggplot(data=cells[cells$RedPeak==0,], aes(x=Length))+
-  geom_histogram(binwidth=0.2, fill="royalblue4")+
-  geom_histogram(data=cells[cells$RedPeak==1,],binwidth=0.2, alpha=0.5, fill="orange")+
-  geom_histogram(data=cells[cells$RedPeak==2,],binwidth=0.2, alpha=0.5, fill="red")
-dev.off()
-
-length(cells[cells$RedPeak==0,]$Index)
-length(cells[cells$BluePeak==1,]$Index)
-
-
-ggplot(data=filer, aes(x=x, y=y))+
-  geom_line()+
-  geom_point(data=filer[findpeaks(filer$y, span=10),][filer[findpeaks(filer$y, span=10),]$y-min(filer$y)>(0.4*(max(filer$y)-min(filer$y))),], aes(x=x, y=y), col="red")
-
-
-ggplot(data=cellsTOT, aes(x=BluePeak, y=..density..))+
-  geom_histogram(binwidth=1, fill="royalblue4")+
-  geom_histogram(data=cellsTOT, aes(x=RedPeak, y=..density..), binwidth=1, alpha=0.5, fill="orange")
-
-
-
-ggplot(data=cells, aes(x=RedPeak))+
-  geom_histogram(binwidth = 1)+
-  xlim(-1,5)
-
-ggplot(data=cells, aes(x=BluePeak))+
-  geom_histogram(binwidth = 1)+
-  xlim(-1,5)
-
-plot(filer$x, filer$y, type = "l", col = "gray")
-pk.pos <-findpeaks(filer$y , span=5)
-abline(v = filer$x[pk.pos], col = 4)
-pks <- fitpeaks(filer$y, pk.pos)
-apply(pks, 1,
-      function(pkmodel) {
-        lines(filer$x,
-              dnorm(1:length(filer$x), pkmodel["rt"], pkmodel["sd"]) *
-                pkmodel["area"],
-              col = 2)
-        invisible()
-      })
-
-getAllPeaks()
+#shapiro.test(RESK$Length)
+#kruskal.test(RESK$Length,dipB1$Length)
+#wilcox.test(RESK$Length,dipB1$Length)
