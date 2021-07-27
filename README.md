@@ -8,7 +8,7 @@ ProfilingCells_EPI.ijm
 - Output2: "Red*.txt" (Position X, Channel 2 Intensity from ROI #*) 
 - Output3: "Blue*.txt" (Position X, Channel 3 Intensity from ROI #*)
 - Extra requirements 1: Create a new folder named "Profiles" in the same folder containing the image
-- Extra requirements 2: Rename the folder after completing an image "Profiles" -> "ProfilesN" (Repeat "Extra requirements 1" if analysing a second image")
+- Extra requirements 2: Rename the folder after completing an image "Profiles" -> "ProfilesN" (Repeat "Extra requirements 1" if analysing a second image)
 
 CPAD1_Extract_Cell_length_from_membrane_stain_V1.R
 - Input: "Profiles*" folders containg fluorescence profiles of membrane stained cells (Usually "Red*.txt")
