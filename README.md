@@ -1,6 +1,9 @@
 # Demographs
 
 ## Available Files:
+- ProfilingCells_EPI.ijm
+- CPAD1_Extract_Cell_length_from_membrane_stain_V1.R
+- CPAD2_Cell_Profiles_And_Demographs_From_GG_Fiji_Macro_V3.R
 
 Elyra_Table_example: 
 - Index
