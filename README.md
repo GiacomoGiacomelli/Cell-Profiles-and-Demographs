@@ -6,7 +6,8 @@ ProfilingCells_EPI.ijm
 - Input: ROIs (Segmented Lines with defined Width -> User Defined)
 - Output1: "Gray*.txt" (Position X, Channel 1 Intensity from ROI #*) 
 - Output2: "Red*.txt" (Position X, Channel 2 Intensity from ROI #*) 
-- Output3: "Blue*.txt" (Position X, Channel 3 Intensity from ROI #*) 
+- Output3: "Blue*.txt" (Position X, Channel 3 Intensity from ROI #*)
+- Extra requirements: Create a new folder named "Profiles" in the same folder containing the image 
 
 CPAD1_Extract_Cell_length_from_membrane_stain_V1.R
 - Input: CellsProfiles
