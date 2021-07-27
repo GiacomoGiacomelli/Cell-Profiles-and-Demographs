@@ -15,7 +15,7 @@ CPAD1_Extract_Cell_length_from_membrane_stain_V1.R
 - Ouput: Curated Profiles ("Gray*.txt","Red*.txt","Blue*.txt")
 - Extra requirements: Create a "Membranes*" with the same numbering of the "Profiles*" folders
 
-CPAD2_Cell_Profiles_And_Demographs_From_GG_Fiji_Macro_V3.R
+CPAD2_Cell_Profiles_And_Demographs_V3.R
 NOTE: This Script uses the "findpeaks" function from -> https://rdrr.io/bioc/alsace/man/fitpeaks.html
 - Input1: "Membranes*" or "Profiles*" folders containing fluorescence profiles ("Gray*.txt", "Red*.txt, "Blue*.txt").
 - User Defined1: PlotType ("CellNorm/PopNorm") -> determines the type of normalization
