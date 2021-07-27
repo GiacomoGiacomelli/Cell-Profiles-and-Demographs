@@ -1,6 +1,6 @@
-## Demographs
+# Demographs
 
-# Available Files:
+## Available Files:
 
 Elyra_Table_example: 
 - Index
