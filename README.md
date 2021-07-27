@@ -1,6 +1,8 @@
 # Cell profiles and demographs
 
 ## Available Files:
+Kymographs_from_Cell_Profiles_V3.pptx -> This .pptx file contains extensive explanation on how to use the various scripts/macros contained within this page
+
 ProfilingCells_EPI.ijm
 - Input: Multi Channel Microscopy Image (Any Image)
 - Input: RoiSet.zip (Segmented Lines with defined Width -> User Defined)
